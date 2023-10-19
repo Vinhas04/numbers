@@ -10,11 +10,15 @@ public class ListDeduplicatorTest {
 
     @Test
     public void deduplicate() {
-        List<Integer> list = Arrays.asList(1,2,4,2,5);
-        List<Integer> expected = Arrays.asList(1,2,4,5);
+
+        List<Integer> list = Arrays.asList(1,2,4,2);
+        List<Integer> expected = Arrays.asList(1,2,4);
 
         ListDeduplicator deduplicator = new ListDeduplicator();
-        List<Integer> distinct = deduplicator.deduplicate(list);
+        class ListSorterStub implements GenericListSorter{
+            public List<Integer> sort(List<Integer> list){return Arrays.asList(1,2,2,4);}
+                }
+        List<Integer> distinct = deduplicator.deduplicate(list, new ListSorterStub());
 
         Assertions.assertEquals(expected, distinct);
     }

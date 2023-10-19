@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 
-public class ListSorterTest {
+public class ListSorterTest{
 
     @Test
     public void sort() {
@@ -18,4 +18,7 @@ public class ListSorterTest {
 
         Assertions.assertEquals(expected, sorted);
     }
+
+
+
 }
